@@ -25,3 +25,4 @@ Route::get('/join', function () {
 
 Route::get('/provider/{name}', [VideoProviderController::class, 'selectProvider']);
 Route::get('/provider/vonage/join/{sessionId}', [VideoProviderController::class, 'joinVonage']);
+Route::get('/provider/zoom/join/{sessionName}', [VideoProviderController::class, 'joinZoom']);

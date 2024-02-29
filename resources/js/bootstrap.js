@@ -5,6 +5,8 @@
  */
 
 import axios from 'axios';
+import ZoomVideo from '@zoom/videosdk';
+
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -32,3 +34,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 
 window.OpenTok = require('@opentok/client');
+
+window.ZoomVideo = ZoomVideo;
+
+console.log('ZoomVideo', ZoomVideo);

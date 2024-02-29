@@ -11,6 +11,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@opentok/client": "^2.26.4"
+        "@opentok/client": "^2.26.4",
+        "@zoom/videosdk": "^1.10.7"
     }
 }
