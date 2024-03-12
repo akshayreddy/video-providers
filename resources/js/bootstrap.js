@@ -7,6 +7,14 @@
 import axios from 'axios';
 import ZoomVideo from '@zoom/videosdk';
 
+import {
+    createVonageMediaProcessor
+} from '../../node_modules/@vonage/ml-transformers/dist/ml-transformers.es.js';
+
+
+window.createVonageMediaProcessor = createVonageMediaProcessor;
+
+console.log('createVonageMediaProcessor', createVonageMediaProcessor);
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

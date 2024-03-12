@@ -21,7 +21,7 @@
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center">Zoom Observer</h1>
+    <h1 class="text-center">Zoom Patient</h1>
 
     <div class="row" >
         <div class="col">
@@ -57,6 +57,7 @@
             stream = client.getMediaStream()
             stream.startVideo()
                 .then((videoElement) => {
+                    // stream.startAudio();
                     console.log('start video successful');
                 })
                 .catch((error) => {

@@ -47,17 +47,6 @@
             </div>
         </div>
 
-        {{-- FOR RENDER VIDEO --}}
-        {{-- <div class="col">
-            <div class="col">
-                <h1>Remote: Patient Thumbnamil</h1>
-                <video id="patient-thumbnail" width="1920" height="1080" style="width: 100%; height: auto;">
-                </video>
-            </div>
-            <div class="col">
-                <h1>Remote: Patient Main Video</h1>
-                <video id="patient-main"></video>
-            </div> --}}
         </div>
     </div>
 </div>
@@ -83,13 +72,10 @@
             stream.startVideo()
                 .then((videoElement) => {
                     console.log('start video successful');
-
                 })
                 .catch((error) => {
                     console.log('start video error', error);
                 });
-
-
         });
     });
 
@@ -112,6 +98,8 @@
             if (user.displayName === 'observer' && user.bVideoOn === true) {
                 stream.attachVideo(payload.userId, stream.getVideoMaxQuality())
                     .then((videoElement) => {
+                        videoElement.style.width = "200px";
+                        videoElement.style.height = "200px";
                         document.getElementById('observer').append(videoElement);
                     })
                     .catch((error) => {
@@ -121,35 +109,31 @@
 
             if (user.displayName === 'patient' && user.bVideoOn === true) {
 
+                console.log('patient id', user.userId);
                 // attach video
                 stream.attachVideo(user.userId, stream.getVideoMaxQuality())
                     .then((videoElement) => {
                         videoElement.style.width = "200px";
                         videoElement.style.height = "200px";
-                        // let cloneElement = videoElement.cloneNode(true);
                         document.getElementById('patient-thumbnail').append(videoElement);
                         console.log('added video patient thumbnail');
-                        // document.getElementById('patient-main').append(cloneElement);
                     })
                     .catch((error) => {
                         console.log('patient-thumbnail attachVideo error', error);
                     });
 
-                // stream.attachVideo(user.userId, stream.getVideoMaxQuality())
-                //     .then((videoElement) => {
-                //         videoElement.style.width = "200px";
-                //         videoElement.style.height = "200px";
-                //         document.getElementById('patient-main').append(videoElement);
-                //         console.log('added video patient main');
-                //     })
-                //     .catch((error) => {
-                //         console.log('patient-main attachVideo error', error);
-                //     });
+                stream.attachVideo(user.userId, stream.getVideoMaxQuality())
+                    .then((videoElement) => {
+                        videoElement.style.width = "200px";
+                        videoElement.style.height = "200px";
+                        document.getElementById('patient-main').append(videoElement);
+                        console.log('added video patient main');
+                    })
+                    .catch((error) => {
+                        console.log('patient-main attachVideo error', error);
+                    });
 
 
-                // render video
-                // stream.renderVideo(document.getElementById('patient-thumbnail'),
-                //     user.userId, 1920, 1080);
 
             }
         });

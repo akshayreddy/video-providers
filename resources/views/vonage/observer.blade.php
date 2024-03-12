@@ -36,6 +36,7 @@
 </div>
 
 <script>
+
     // Initialize an OpenTok session
     const apiKey = "{{ $api_key }}"
     const sessionId = "{{ $session_id }}"
@@ -54,7 +55,8 @@
         session.subscribe(event.stream, 'patient', {
             insertMode: 'append',
             width: '100%',
-            height: '100%'
+            height: '100%',
+            audioVolume: 0,
         }, handleError);
     });
 
@@ -62,7 +64,8 @@
     const publisher = OT.initPublisher('observer', {
         insertMode: 'append',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        audioVolume: 0,
     }, handleError);
 
     console.log('publisher', publisher);
@@ -83,8 +86,19 @@
       // Process the event.data property, if there is any data.
     });
 
+    publisher.on('videoElementCreated', function(event) {
+        console.log('videoElementCreated', event);
+        console.log()
+    });
+
+    function getVideoElement() {
+
+    }
+
 
 </script>
+
+<script src="./app.js"></script>
 
 </body>
 </html>

@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@opentok/client": "^2.26.4",
+        "@vonage/ml-transformers": "^5.1.2",
         "@zoom/videosdk": "^1.10.7"
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use OpenTok\OpenTok;
 use OpenTok\Role;
+use Firebase\JWT\JWT;
 
 class VideoProviderController extends Controller
 {
@@ -46,7 +47,7 @@ class VideoProviderController extends Controller
             ];
 
             return view('zoom.observer')->with([
-                'token' => $this->createJWTToken($payload),
+                'token' => JWT::encode($payload, env('ZOOM_SDK_SECRET'), 'HS256'),
                 'sessionName' => $sessionName,
             ]);
         }
@@ -124,7 +125,7 @@ class VideoProviderController extends Controller
         ];
 
         return view('zoom.patient')->with([
-            'token' => $this->createJWTToken($payload),
+            'token' => JWT::encode($payload, env('ZOOM_SDK_SECRET'), 'HS256'),
             'sessionName' => $sessionName,
         ]);
     }
